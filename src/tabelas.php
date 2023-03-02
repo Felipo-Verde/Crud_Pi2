@@ -37,7 +37,8 @@ function insertInto_usuario() {
 
 function update_usuario() {
 	global $conn;
-	$sth = $conn->prepare("UPDATE tb_usuario SET nome = :nome, email = :email, telefone = :telefone, data = :data, servico = :servico, barbeiro = :barbeiro, notificacao = :notificacao, corte = :corte WHERE id = :id");
+	$sth = $conn->prepare("UPDATE tb_usuario SET nome = :nome, email = :email, telefone = :telefone, data = :data, servico = :servico, barbeiro = :barbeiro, notificacao = :notificacao, corte = :corte WHERE id_usuario = :id");
+	$sth->bindParam(':id', $_POST['id_usuario']);
 	$sth->bindParam(':nome', $_POST['nome']);
 	$sth->bindParam(':email', $_POST['email']);
 	$sth->bindParam(':telefone', $_POST['telefone']);
@@ -46,7 +47,6 @@ function update_usuario() {
 	$sth->bindParam(':barbeiro', $_POST['barbeiro']);
 	$sth->bindParam(':notificacao', $_POST['notificacao']);
 	$sth->bindParam(':corte', $_POST['corte']);
-	$sth->bindParam(':id', $_POST['id']);
 	$sth->execute();
 }
 

@@ -1,4 +1,6 @@
-<form method="post" class="mx-auto" action="enviando.php" style="padding-top: 50px; margin-bottom: 50px;">
+<h1 class="mx-auto" style="text-align: center; color: white"> Cadastre uma Reserva </h1>
+
+<form method="post" class="mx-auto" action="enviando.php" style="padding-top: 20px; margin-bottom: 50px;">
   <div class="form-floating" style="margin: 22px;">
     <input type="text" class="form-control" id="nome" name="nome" placeholder="Exemplo" required />
     <label for="nome">Nome</label>

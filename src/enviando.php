@@ -9,8 +9,6 @@
 
     insertInto_usuario();
 
-    $_POST.array_push($_POST, 'eu sou gay');
-
     header("Location: index.php");
 
 ?>

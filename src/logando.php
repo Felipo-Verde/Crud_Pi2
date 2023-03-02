@@ -127,7 +127,7 @@ require_once('tabelas.php');
       $senha = $_POST['senha'];
 
       if ($login == 'admin@123.com' && $senha == '123') {
-        include 'home.php';
+        include 'inserir.php';
       } else {
         echo '<h2 class="text-light" style="display:flex;justify-content:center;align-items:center;">Login ou senha incorretos</h2>';
       }

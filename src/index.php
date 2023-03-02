@@ -11,8 +11,6 @@ require_once "tabelas.php";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.108.0">
   <title>Barbearia Show!</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
@@ -104,16 +102,18 @@ require_once "tabelas.php";
       <div class="container">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
           <?php
           $usuarios = select_usuario();
           foreach ($usuarios as $usuario) {
-            echo '<form method="post" class="mx-auto" action="delete.php">';
+            echo '<form action="delete.php" method="post">';
+            $id = $usuario['id_usuario'];
+          ?>
+            <input type="hidden" name="<?php echo 'id_usuario' ?>" id=" <?php echo $id ?>" value="<?php echo $id ?>">
+          <?php
             echo "<div class='col'>";
             echo "<div class='card shadow-sm'>";
             echo "<div class='card-body'>";
             echo "<h4 class='card-text'>O nome no agendamento é: <strong>{$usuario['nome']}</strong></h4>";
-            echo "<input type='hidden' id='{$usuario['id_usuario']} name='{$usuario['id_usuario']}' value='12'></input>";
             echo "<h5 class='card-text'>O E-mail no agendamento é: <strong>{$usuario['email']}</strong></h5>";
             echo "<h5 class='card-text'>O telefone no agendamento é: <strong>{$usuario['telefone']}</strong></h5>";
             echo "<h5 class='card-text'>A data no agendamento é: <strong>{$usuario['data']}</strong></h5>";
@@ -128,10 +128,8 @@ require_once "tabelas.php";
             echo "<p class='card-text'>{$usuario['corte']}</p>";
             echo "<div class='d-flex justify-content-between align-items-center'>";
             echo "<div class='btn-group'>";
-            echo "<form action='index.php' method='post'>";
-            echo '<button type="submit" class="btn btn-sm btn-outline-secondary" value="delete"> Deletar </button>';
-            echo '<button type="submit" class="btn btn-sm btn-outline-secondary" value="edit"> Edit </button>';
-            echo "</form>";
+            echo '<input type="submit" class="btn btn-sm btn-outline-secondary" name="UD" value="Deletar"></input>';
+            echo '<input type="submit" class="btn btn-sm btn-outline-secondary" name="UD" value="Editar"></input>';
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -141,6 +139,7 @@ require_once "tabelas.php";
           }
 
           ?>
+          </form>
         </div>
       </div>
     </div>
