@@ -1,19 +1,27 @@
 <?php
-require_once('banco.php');
-require_once('tabelas.php');
+require_once "banco.php";
+require_once "tabelas.php";
+
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.108.0">
   <title>Barbearia Show!</title>
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/" />
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
-  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     .bd-placeholder-img {
@@ -32,11 +40,10 @@ require_once('tabelas.php');
 
     .b-example-divider {
       height: 3rem;
-      background-color: rgba(0, 0, 0, 0.1);
-      border: solid rgba(0, 0, 0, 0.15);
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
       border-width: 1px 0;
-      box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
-        inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
     }
 
     .b-example-vr {
@@ -46,7 +53,7 @@ require_once('tabelas.php');
     }
 
     .bi {
-      vertical-align: -0.125em;
+      vertical-align: -.125em;
       fill: currentColor;
     }
 
@@ -69,36 +76,80 @@ require_once('tabelas.php');
     }
   </style>
 
-  <!-- Custom styles for this template -->
-  <link href="signin.css" rel="stylesheet" />
-
 
 </head>
 
-<body style="background-color: #09181f">
+<body style="background-color: #040d12">
 
-  <header>
-    <img class="mb-4 position-absolute top-0 start-50 translate-middle-x" src="logo.jpg" alt="" width="400" />
-  </header>
+  <main>
 
-  <main class="mx-auto" style="width: 30%">
-    <?php
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #09181f">
 
-    if (isset($_POST['submit1'])) {
-      $login = $_POST['login'];
-      $senha = $_POST['senha'];
+      <a class="navbar-brand" href="index.php" style="width: 20%; margin-left: 30px">
+        <img src="logoCortada.jpg" alt="Logo" style="width: 100%">
+      </a>
 
-      if ($login == 'admin@123.com' && $senha == '123') {
-        include 'home.php';
-      } else {
-        echo '<h2 class="text-light" style="display:flex;justify-content:center;align-items:center;">Login ou senha incorretos</h2>';
-      }
-    } else {
-      include('login.php');
-    }
 
-    ?>
+      <div class="navbar-collapse justify-content-end" style="width: 25%; margin-right: 30px">
+        <button class="btn btn-primary" type="button" style="padding: 30px 100px;">
+          <a href="logando.php" style="color: white; text-decoration: none">
+            <h5>Login</h5>
+          </a>
+        </button>
+      </div>
+
+    </nav>
+
+    <div class="album py-5">
+      <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+          <?php
+          $usuarios = select_usuario();
+          foreach ($usuarios as $usuario) {
+            echo '<form method="post" class="mx-auto" action="delete.php">';
+            echo "<div class='col'>";
+            echo "<div class='card shadow-sm'>";
+            echo "<div class='card-body'>";
+            echo "<h4 class='card-text'>O nome no agendamento é: <strong>{$usuario['nome']}</strong></h4>";
+            echo "<input type='hidden' id='{$usuario['id_usuario']} name='{$usuario['id_usuario']}' value='12'></input>";
+            echo "<h5 class='card-text'>O E-mail no agendamento é: <strong>{$usuario['email']}</strong></h5>";
+            echo "<h5 class='card-text'>O telefone no agendamento é: <strong>{$usuario['telefone']}</strong></h5>";
+            echo "<h5 class='card-text'>A data no agendamento é: <strong>{$usuario['data']}</strong></h5>";
+            echo "<h5 class='card-text'>O serviço escolhido é: <strong>{$usuario['tipo']}</strong></h5>";
+            echo "<h5 class='card-text'>O barbeiro escolhido é o(a): <strong>{$usuario['nome_barbeiro']}</strong></h5>";
+            if ($usuario['notificacao'] == 1) {
+              echo "<h5 class='card-text'>Você <strong>deseja</strong> receber notificações em seu e-mail</h5>";
+            } else {
+              echo "<h5 class='card-text'>Você <strong>não</strong> deseja receber notificações em seu e-mail</h5>";
+            }
+            echo "<h5 class='card-text'>Você gostaria do seu corte:</h5>";
+            echo "<p class='card-text'>{$usuario['corte']}</p>";
+            echo "<div class='d-flex justify-content-between align-items-center'>";
+            echo "<div class='btn-group'>";
+            echo "<form action='index.php' method='post'>";
+            echo '<button type="submit" class="btn btn-sm btn-outline-secondary" value="delete"> Deletar </button>';
+            echo '<button type="submit" class="btn btn-sm btn-outline-secondary" value="edit"> Edit </button>';
+            echo "</form>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</form>";
+          }
+
+          ?>
+        </div>
+      </div>
+    </div>
+
   </main>
+
+
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 

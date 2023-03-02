@@ -1,6 +1,6 @@
-<div class="form-signin w-100 m-auto">
+<div class="form-signin w-100 mx-auto" style="margin-top: 30%">
   <form method="post">
-    <h1 class="h3 mb-3 fw-normal" style="color: white">Faça seu Login</h1>
+    <h1 class="h3 mb-3 fw-normal" style="color: white; text-align: center">Faça seu Login</h1>
 
     <div class="form-floating">
       <input type="email" class="form-control" id="login" name="login" placeholder="name@example.com" />

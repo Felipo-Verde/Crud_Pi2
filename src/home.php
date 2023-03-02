@@ -1,4 +1,4 @@
-<form method="post" class="mx-auto" action="enviando.php" style="padding-top: 370px; margin-bottom: 50px;">
+<form method="post" class="mx-auto" action="enviando.php" style="padding-top: 50px; margin-bottom: 50px;">
   <div class="form-floating" style="margin: 22px;">
     <input type="text" class="form-control" id="nome" name="nome" placeholder="Exemplo" required />
     <label for="nome">Nome</label>
@@ -36,7 +36,7 @@
       
       echo "<div class='form-check'>";
       echo "<input class=\"form-check-input\" type=\"radio\" name=\"barbeiro\" id=\"barbeiro_{$barbeiro['id']}\" value=\"{$barbeiro['id']}\" required>";
-      echo "<label class=\"form-check-label text-light\" for=\"barbeir_{$barbeiro['id']}}\"> {$barbeiro['nome_barbeiro']} </label>";
+      echo "<label class=\"form-check-label text-light\" for=\"barbeiro_{$barbeiro['id']}}\"> {$barbeiro['nome_barbeiro']} </label>";
       echo "</div>";
 
     }   
